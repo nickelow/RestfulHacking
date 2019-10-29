@@ -11,15 +11,15 @@ module.exports = (app, db) => {
 
   app.post("/reports", async (req, res) => {
     if (!req.body.user) {
-      res.send("Please provide a valid username!");
+      res.json("Please provide a valid username!");
     }
-    const user = await db.report.find({
+    const user = await db.user.findOne({
       where: {
         userName: req.body.user
       }
     });
     if (!user) {
-      res.send("Please provide a valid username!");
+      res.json("Please provide a valid username!");
     }
     const report = await db.report.create(req.body);
     res.json(report);

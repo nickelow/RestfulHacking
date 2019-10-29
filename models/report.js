@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     title: DataTypes.STRING,
-    user: DataTypes.INTEGER,
-    createdAt: DataTypes.DATE
+    user: DataTypes.STRING
   });
   return Report;
 };

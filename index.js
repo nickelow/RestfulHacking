@@ -8,11 +8,13 @@ const reports = require("./routes/report-routes");
 const users = require("./routes/user-routes");
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("app/public"));
 
 reports(app, db);
 users(app, db);
+
 db.sequelize
   .sync()
   .then(() => {

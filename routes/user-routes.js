@@ -1,26 +1,44 @@
 module.exports = (app, db) => {
   app.post("/users", async (req, res) => {
-    console.log("post");
-    console.log(req.body);
-    const { name } = req.body;
-    const user = await db.user.create({
-      userName: name
-    });
-    res.send(`welcome, ${user.userName}!`);
+    const { username } = req.body;
+    if (username != null) {
+      const user = await db.user.create({
+        userName: username
+      });
+      res.json(`welcome, ${user.userName}!`);
+    } else {
+      res.json("Please include a username!");
+    }
   });
+
   app.get("/users", async (req, res) => {
     const users = await db.user.findAll();
-    res.send(users);
+    res.json(users);
   });
+
   app.get("/users/:name", async (req, res) => {
-    console.log(req.body);
-    console.log(req.params);
     const user = await db.user.findOne({
       where: {
         userName: req.params.name
       }
     });
-    console.log(user);
-    res.send(user.userName);
+    res.json(user.userName);
+  });
+
+  app.put("/users/:name", async (req, res) => {
+    const user = await db.user.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    });
+  });
+
+  app.delete("users/:name", async (req, res) => {
+    const user = await db.user.delete({
+      where: {
+        userName: req.params.name
+      }
+    });
+    res.json(`Deleted ${user.userName}!`);
   });
 };
