@@ -40,7 +40,10 @@ module.exports = (app, db) => {
         id: req.params.id
       }
     });
-    res.json(report);
+    if (report === null) {
+      res.json("Could not find this report");
+    }
+    res.json(`Updated ${report.title}!`);
   });
 
   app.delete("/reports/:id", async (req, res) => {

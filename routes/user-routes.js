@@ -34,6 +34,10 @@ module.exports = (app, db) => {
         id: req.params.id
       }
     });
+    if (user === null) {
+      res.json("Could not find this user");
+    }
+    res.json(`Updated ${user.userName}!`);
   });
 
   app.delete("users/:name", async (req, res) => {
