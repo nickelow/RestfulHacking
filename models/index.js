@@ -18,9 +18,6 @@ const sequelize = new Sequelize(
 db.report = report(sequelize, Sequelize.DataTypes);
 db.user = user(sequelize, Sequelize.DataTypes);
 
-// db.report.associate(report);
-// db.user.associate(user);
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

@@ -22,6 +22,9 @@ module.exports = (app, db) => {
         userName: req.params.name
       }
     });
+    if (user === null) {
+      res.json("Could not find this user");
+    }
     res.json(user.userName);
   });
 
@@ -39,6 +42,9 @@ module.exports = (app, db) => {
         userName: req.params.name
       }
     });
+    if (user === null) {
+      res.json("Could not find this user");
+    }
     res.json(`Deleted ${user.userName}!`);
   });
 };

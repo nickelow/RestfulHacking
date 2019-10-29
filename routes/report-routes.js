@@ -6,12 +6,18 @@ module.exports = (app, db) => {
 
   app.get("/reports/:id", async (req, res) => {
     const report = await db.report.findByPk(req.params.id);
+    if (report === null) {
+      res.json("Could not find this report");
+    }
     res.json(report);
   });
 
   app.post("/reports", async (req, res) => {
     if (!req.body.user) {
       res.json("Please provide a valid username!");
+    }
+    if (!req.body.title) {
+      res.json("Please provide a title!");
     }
     const user = await db.user.findOne({
       where: {
@@ -25,7 +31,10 @@ module.exports = (app, db) => {
     res.json(report);
   });
 
-  app.put("reports/:id", async (req, res) => {
+  app.put("/reports/:id", async (req, res) => {
+    if (!req.body.title) {
+      res.json("Please provide a title!");
+    }
     const report = await db.report.update(req.body, {
       where: {
         id: req.params.id
@@ -40,5 +49,9 @@ module.exports = (app, db) => {
         id: req.params.id
       }
     });
+    if (report === null) {
+      res.json("Could not find this report");
+    }
+    res.json(`Deleted ${report.title}!`);
   });
 };
