@@ -4,7 +4,7 @@ REST API for Take Home Project
 ## To Start:
 `npm install`
 
-`npm start`
+`npm start`, then enter your root password.
 
 ##### At this point your server should connect to localhost, and a success message should appear in the terminal
 
