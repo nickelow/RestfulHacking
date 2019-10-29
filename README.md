@@ -3,6 +3,7 @@ REST API for Take Home Project
 
 ## To Start:
 `npm install`
+
 `npm start`
 
 ##### At this point your server should connect to localhost, and a success message should appear in the terminal
@@ -22,5 +23,7 @@ REST API for Take Home Project
 `curl http://localhost:8080/reports/1`
 
 `curl -X PUT --header "Content-Type: application/json" -d "{\"user\":\"matt\", \"title\":\"New\"}" http://localhost:8080/reports/1`
+
 `curl  http://localhost:8080/reports/1`
+
 `curl -X DELETE  http://localhost:8080/reports/1`
