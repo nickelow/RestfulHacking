@@ -22,3 +22,5 @@ REST API for Take Home Project
 `curl http://localhost:8080/reports/1`
 
 `curl -X PUT --header "Content-Type: application/json" -d "{\"user\":\"matt\", \"title\":\"New\"}" http://localhost:8080/reports/1`
+`curl  http://localhost:8080/reports/1`
+`curl -X DELETE  http://localhost:8080/reports/1`
