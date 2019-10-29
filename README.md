@@ -41,3 +41,5 @@ Delete the report.
 
 `curl  http://localhost:8080/reports/1`
 Confirm the report has been deleted.
+
+##### Alternatively, you could connect via Postman and test the requests that way. 
